@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Positron.Naive", "Positron.Naive\Positron.Naive.csproj", "{4E363507-DFC9-42A4-A561-FA4C01D53BC3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Positron.Proof", "Positron.Proof\Positron.Proof.csproj", "{DF2EBA98-97D3-45D9-AF8E-0D77727B0819}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Positron.Common", "Positron.Common\Positron.Common.csproj", "{F7F3D1F0-E982-4D7A-BD3E-4BF4254714EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Positron.TestHarness", "Positron.TestHarness\Positron.TestHarness.csproj", "{B6F5F3CF-0A7E-4F8E-BEAC-332541287BD8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3EF1DAE3-F8B0-4C1B-B5EF-9EFFE6CDEA72} = {3EF1DAE3-F8B0-4C1B-B5EF-9EFFE6CDEA72}
+		{4E363507-DFC9-42A4-A561-FA4C01D53BC3} = {4E363507-DFC9-42A4-A561-FA4C01D53BC3}
+		{DF2EBA98-97D3-45D9-AF8E-0D77727B0819} = {DF2EBA98-97D3-45D9-AF8E-0D77727B0819}
+		{F7F3D1F0-E982-4D7A-BD3E-4BF4254714EF} = {F7F3D1F0-E982-4D7A-BD3E-4BF4254714EF}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Positron.Experimental", "Positron.Experimental\Positron.Experimental.csproj", "{3EF1DAE3-F8B0-4C1B-B5EF-9EFFE6CDEA72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E363507-DFC9-42A4-A561-FA4C01D53BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E363507-DFC9-42A4-A561-FA4C01D53BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E363507-DFC9-42A4-A561-FA4C01D53BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E363507-DFC9-42A4-A561-FA4C01D53BC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF2EBA98-97D3-45D9-AF8E-0D77727B0819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF2EBA98-97D3-45D9-AF8E-0D77727B0819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF2EBA98-97D3-45D9-AF8E-0D77727B0819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF2EBA98-97D3-45D9-AF8E-0D77727B0819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7F3D1F0-E982-4D7A-BD3E-4BF4254714EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7F3D1F0-E982-4D7A-BD3E-4BF4254714EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7F3D1F0-E982-4D7A-BD3E-4BF4254714EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7F3D1F0-E982-4D7A-BD3E-4BF4254714EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6F5F3CF-0A7E-4F8E-BEAC-332541287BD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6F5F3CF-0A7E-4F8E-BEAC-332541287BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6F5F3CF-0A7E-4F8E-BEAC-332541287BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6F5F3CF-0A7E-4F8E-BEAC-332541287BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EF1DAE3-F8B0-4C1B-B5EF-9EFFE6CDEA72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EF1DAE3-F8B0-4C1B-B5EF-9EFFE6CDEA72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EF1DAE3-F8B0-4C1B-B5EF-9EFFE6CDEA72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EF1DAE3-F8B0-4C1B-B5EF-9EFFE6CDEA72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2C108F2-D862-432F-AB13-901A03963BD2}
+	EndGlobalSection
+EndGlobal

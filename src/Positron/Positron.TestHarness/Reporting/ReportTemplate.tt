@@ -1,0 +1,77 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Report Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container-fluid my-5">
+      <h1>Report Summary</h1>
+      <p>This test suite took <#= TotalDuration #> to complete.</p>
+     
+    <# foreach(var testScenarion in TestScenarios)
+    {
+    var successfullAttempts = testScenarion.TestCases.SelectMany(tc => tc.Attempts).Where(a => a.Result == AttemptResult.Success);
+    var minQueryTime = successfullAttempts.Min(a => a.QueryTime);
+    #>
+    <div class="card my-5">
+        <div class="card-body">
+            <h5 class="card-title"><#= testScenarion.Name #></h5>
+            <p><#= testScenarion.Description #></p>
+            <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Test Case</th>
+                <th scope="col">Average Setup Time</th>
+                <th scope="col">Average Query Time</th>
+                <th scope="col">Failed Runs</th>
+                <th scope="col">Deviations</th>
+            </tr>
+            </thead>
+            <tbody>
+            <# foreach(var testCase in testScenarion.TestCases)
+            {
+            var queryTime = testCase.Attempts.Where(a => a.Result == AttemptResult.Success).Average(s => s.QueryTime);
+            var setupTime = testCase.Attempts.Where(a => a.Result == AttemptResult.Success).Average(s => s.SetupTime);
+            var failedAttempts = testCase.Attempts.Where(a => a.Result == AttemptResult.Failed).Count();
+            var deviations = testCase.Deviations.Count;
+
+            #>
+            <tr>
+                <th scope="row"><#= testCase.TestName #></th>
+                <td><#= setupTime #> ms</td>
+                <td><#= queryTime #> ms</td>
+                <# if (failedAttempts > 0) { #>
+                <td class="text-danger-emphasis"><#= failedAttempts #></td>
+                <# } else { #>
+                <td class="text-success-emphasis"><#= failedAttempts #></td>
+                <# } #>
+                <# if (deviations > 0) { #>
+                <td class="text-danger-emphasis"><#= deviations #></td>
+                <# } else { #>
+                <td class="text-success-emphasis"><#= deviations #></td>
+                <# } #>
+            </tr>
+            <#
+            }
+            #>
+            </tbody>
+            </table>
+            </div>
+        </div>
+        <#
+        }
+        #>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
