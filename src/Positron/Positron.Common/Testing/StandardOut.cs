@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Positron.Common.Testing;
+﻿namespace Positron.Common.Testing;
 
 public static class StandardOut
 {
