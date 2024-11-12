@@ -8,7 +8,7 @@ public static class TestDataGenerator
     {
         var lookupPositions = new SpatialQuery[amountOfQueries];
         
-        for (int i = 0; i < amountOfQueries; i++)
+        for (var i = 0; i < amountOfQueries; i++)
         {
             lookupPositions[i] = new SpatialQuery(new Coordinate()
             {

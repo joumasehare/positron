@@ -3,7 +3,7 @@
 public class TestHarnessSettings
 {
     public const string DefaultDataPath = "VehiclePositions.dat";
-    public const string DefaultQueryPath = "100.txt";
+    public const string DefaultQueryPath = "Query.txt";
 
     public static TestHarnessSettings Parse(string[] args)
     {
@@ -30,5 +30,5 @@ public class TestHarnessSettings
 
     public required string DataFilePath { get; set; }
 
-    public string? ResultFileName { get; set; } = "Results.csv";
+    public string ResultFileName { get; set; } = "Results.csv";
 }

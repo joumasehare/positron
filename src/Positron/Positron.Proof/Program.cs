@@ -1,5 +1,5 @@
 ﻿using Positron.Common.Testing;
 using Positron.Proof;
 
-TestHarnessWrapper wrapper = new TestHarnessWrapper(args, new ProofSpacialService());
+var wrapper = new TestHarnessWrapper(args, new ProofSpacialService());
 wrapper.Run();

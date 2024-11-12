@@ -9,7 +9,7 @@ namespace Positron.Common.IO
         {
             byte[] data = File.ReadAllBytes(dataFilePath);
 
-            List<VehiclePosition> vehiclePositionList = new List<VehiclePosition>();
+            List<VehiclePosition> vehiclePositionList = [];
             int offset = 0;
             while (offset < data.Length)
                 vehiclePositionList.Add(GetVehiclePosition(data, ref offset));

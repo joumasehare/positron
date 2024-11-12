@@ -8,7 +8,7 @@ public class TestScenario
     public List<TestCase> TestCases { get; } = new();
     public string? Name { get; set; }
     public string? Description { get; set; }
-    public TestCase GroundTruth => TestCases.Find(t => t.IsGroundTruth);
+    public TestCase? GroundTruth => TestCases.Find(t => t.IsGroundTruth);
 
     private TestCase currentTestCase;
     private int currentAttempt;

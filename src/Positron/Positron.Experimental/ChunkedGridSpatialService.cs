@@ -10,16 +10,11 @@ public class ChunkedGridSpatialService : ISpatialService
 {
     private TestHarnessContext context;
     private int resolution = 10;
-    private int xBound;
-    private int yBound;
 
     private Dictionary<Point, List<VehiclePosition>> chucks = null!;
 
     public void PrepareData()
     {
-        xBound = MathHelpers.LongitudeMax * resolution;
-        yBound = MathHelpers.LatitudeMax * resolution;
-
         chucks = new Dictionary<Point, List<VehiclePosition>>();
 
         foreach (var vehiclePosition in CollectionsMarshal.AsSpan(context.DataList))
@@ -64,7 +59,7 @@ public class ChunkedGridSpatialService : ISpatialService
         return new SpatialQueryResult(query.TestId, query.Coordinate, closestVehiclePosition);
     }
 
-    private Point CalculateChunk(float latitude, float longitude, int resolution)
+    private static Point CalculateChunk(float latitude, float longitude, int resolution)
     {
         return new Point()
         {
@@ -73,7 +68,7 @@ public class ChunkedGridSpatialService : ISpatialService
         };
     }
 
-    private Point CalculateChunk(Coordinate coordinate, int resolution)
+    private static Point CalculateChunk(Coordinate coordinate, int resolution)
     {
         return CalculateChunk(coordinate.Latitude, coordinate.Longitude, resolution);
     }
@@ -84,9 +79,9 @@ public class ChunkedGridSpatialService : ISpatialService
 
         var shortest = double.MaxValue;
 
-        (double distance, Point entry)[] points = new (double distance, Point entry)[chucks.Keys.Count];
+        var points = new (double distance, Point entry)[chucks.Keys.Count];
 
-        int index = 0;
+        var index = 0;
         foreach (var chuckKey in chucks.Keys)
         {
             points[index] = new ValueTuple<double, Point>(MathHelpers.CalculateDistanceBetweenPoints(chuckKey, point), chuckKey);
@@ -120,18 +115,17 @@ public class ChunkedGridSpatialService : ISpatialService
         foreach (var vehiclePosition in chuck)
         {
             var distance = MathHelpers.CalculateDistance(coordinate, vehiclePosition.Coordinate);
-            if (distance < currentShortestDistance)
+            if (!(distance < currentShortestDistance)) continue;
+
+            result.Chunk = new Point()
             {
-                result.Chunk = new Point()
-                {
-                    X = chunkIndex.X,
-                    Y = chunkIndex.Y,
-                };
-                result.PositionFound = true;
-                result.Distance = distance;
-                result.VehiclePosition = vehiclePosition;
-                currentShortestDistance = distance;
-            }
+                X = chunkIndex.X,
+                Y = chunkIndex.Y,
+            };
+            result.PositionFound = true;
+            result.Distance = distance;
+            result.VehiclePosition = vehiclePosition;
+            currentShortestDistance = distance;
         }
 
         return result;

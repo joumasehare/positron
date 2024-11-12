@@ -21,8 +21,8 @@ namespace Positron.TestHarness
             Attempts.Add(new TestCaseAttempt(attemptNumber, totalRunAmount, AttemptResult.Failed));
         }
 
-        public List<TestCaseAttempt> Attempts { get; set; } = new();
-        public string ResultFile { get; set; }
+        public List<TestCaseAttempt> Attempts { get; set; } = [];
+        public string ResultFile { get; set; } = null!;
 
         public void LogSuccessfulAttempt(int attemptNumber, int totalRunAmount, long totalDuration, long setupTime)
         {

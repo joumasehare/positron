@@ -7,7 +7,7 @@
         public float Latitude { get; set; }
         public float Longitude { get; set; }
         public DateTime RecordedDateTimeUtc { get; set; }
-        public Coordinate Coordinate => new Coordinate() { Latitude = Latitude, Longitude = Longitude };
+        public Coordinate Coordinate => new() { Latitude = Latitude, Longitude = Longitude };
 
         public override string ToString()
         {

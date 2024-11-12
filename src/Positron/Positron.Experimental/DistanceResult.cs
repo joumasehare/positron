@@ -7,6 +7,6 @@ internal class DistanceResult
 {
     public bool PositionFound { get; set; } = false;
     public double Distance { get; set; }
-    public VehiclePosition VehiclePosition { get; set; }
+    public VehiclePosition VehiclePosition { get; set; } = new();
     public Point Chunk { get; set; }
 }
